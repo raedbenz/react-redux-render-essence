@@ -1,23 +1,31 @@
 
 const initialState = {
-    payload: null,
-    meh: null
+    message: null,
+    count: 0,
+    extra: false
 }
 
 const rendererReducer =
     (state = initialState, action) => {
         switch (action.type) {
-            case 'SIMPLE_ACTION':
-                console.log('Selectors will be called, and connected is intrested in this part of the state.meh, then will re-render!');
+            case 'ONE_OFF_RENDERING_ACTION':
+                console.log('Selectors will be called, and connected component is intrested in this part of the state.meh, then will re-render!');
                 return {
                     ...state,
-                    payload: action.payload
+                    message: action.message
                 }
-            case 'MEH_ACTION':
+            case 'CONT_RENDERING_ACTION':
+                console.log('Selectors will be called, and connected component is intrested in this part of the state.meh, then will re-render!');
+                var incremented = state.count + 1;
+                return {
+                    ...state,
+                    count: incremented
+                }
+            case 'NONRENDERING_ACTION':
                 console.log('Selectors will be called, but if connected component is not intrested in this part of the state.meh, then no re-render!');
                 return {
                     ...state,
-                    meh: action.payload
+                    message: action.message
                 }
             default:
                 console.log('Selectors will not be called hence no re-render!');
@@ -27,12 +35,18 @@ const rendererReducer =
 
 export default rendererReducer;
 
-export function selectPayload(state) {
-    console.log('selectPayload:' + state.simpleReducer.payload);
-    return state.renderer.payload;
+//Selectors
+export function selectReducerCount(state) {
+    console.log('selectReducerCount selector: ' + state.renderer.count);
+    return state.renderer.count;
 }
 
-export function selectMeh(state) {
-    console.log('selectMeh:' + state.simpleReducer.meh)
-    return state.renderer.meh;
+export function selectMessage(state) {
+    console.log('selectMessage selector: ' + state.renderer.message);
+    return state.renderer.message;
+}
+
+export function selectExtra(state) {
+    console.log('selectExtraProperty selector: ' + state.renderer.extra);
+    return state.renderer.extra;
 }
