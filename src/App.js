@@ -66,7 +66,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   count: selectReducerCount(state),
   message: selectMessage(state),
-  extra: selectExtra(state) //uncommenting will cause rerender
+  //extra: selectExtra(state) //uncommenting will cause rerender
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

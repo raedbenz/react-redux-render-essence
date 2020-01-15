@@ -19,7 +19,8 @@ const rendererReducer =
                 var incremented = state.count + 1;
                 return {
                     ...state,
-                    count: incremented
+                    count: incremented,
+                    message: action.message
                 }
             case 'NONRENDERING_ACTION':
                 console.log('Selectors will be called, but if connected component is not intrested in this part of the state.meh, then no re-render!');
