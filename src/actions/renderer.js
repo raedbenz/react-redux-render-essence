@@ -24,6 +24,6 @@ export const unknownAction = () => {
 export const extraCounterAction = () => {
     return {
         type: actionTypes.EXTRA_COUNTER,
-        message: 'non-rendering-action'
+        message: 'unmapped-store-prop-hence-non-rendering-action'
     }
 }
