@@ -1,28 +1,29 @@
+import * as actionTypes from './actionTypes';
 
-export const oneOffRenderingAction = () => {
+export const resetCounterAction = () => {
     return {
-        type: 'ONE_OFF_RENDERING_ACTION',
+        type: actionTypes.RESET_COUNTER,
         message: 'one-off-rendering-action'
     }
 }
 
-export const continuousRenderingAction = () => {
+export const incrementCounterAction = () => {
     return {
-        type: 'CONT_RENDERING_ACTION',
+        type: actionTypes.INCREMENT_COUNTER,
         message: 'continuous-rendering-action'
     }
 }
 
 export const unknownAction = () => {
     return {
-        type: 'UNKNOWN_ACTION',
+        type: actionTypes.UNKNOWN,
         message: 'no-store-change-hence-non-rendering-action' //will not be used
     }
 }
 
-export const nonRenderingAction = () => {
+export const extraCounterAction = () => {
     return {
-        type: 'NONRENDERING_ACTION',
+        type: actionTypes.EXTRA_COUNTER,
         message: 'non-rendering-action'
     }
 }

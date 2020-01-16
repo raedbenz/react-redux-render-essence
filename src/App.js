@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import { oneOffRenderingAction, continuousRenderingAction, unknownAction, nonRenderingAction } from './actions/renderer';
+import { resetCounterAction, incrementCounterAction, unknownAction, extraCounterAction } from './actions/renderer';
 import { selectReducerCount, selectMessage, selectExtra } from './reducers/renderer';
 
 class App extends Component {
@@ -11,44 +11,62 @@ class App extends Component {
     this.renderCount = 0;
   }
 
-  oneOffRenderingAction = (event) => {
-    this.props.oneOffRenderingAction();
+  resetCounterAction = (event) => {
+    this.props.resetCounter();
   }
 
-  continuousRenderingAction = (event) => {
-    this.props.continuousRenderingAction();
+  incrementCounterAction = (event) => {
+    this.props.incrementCounter();
   }
 
   unknownAction = (event) => {
-    this.props.unknownAction();
+    this.props.unknown();
   }
 
-  nonRenderingAction = (event) => {
-    this.props.nonRenderingAction();
+  extraCounterAction = (event) => {
+    this.props.extraCounter();
   }
 
   incrementOnRender = () => {
     this.renderCount = this.renderCount + 1;
   }
 
+  showDescription = () => {
+    console.log('....................');
+  }
+
   render() {
+
     console.count('App render count');
+
     this.incrementOnRender();
-    console.log(this.renderCount);
 
     return (
       <div className="App">
 
-        <div style={{ margin: '50px' }}>
-          <button className='mybutton' onClick={this.oneOffRenderingAction}>One Off Rendering</button>
-          <button className='mybutton' onClick={this.continuousRenderingAction}>Continuous Rendering</button>
-          <button className='mybutton' onClick={this.unknownAction}>Unknown</button>
-          <button className='mybutton' onClick={this.nonRenderingAction}>Non Rendering</button>
+        <div style={{ backgroundColor: '#3D94F6', minHeight: '50h', padding: '20px' }}>
+          <h3>This is a single component app.</h3>
         </div>
 
+        <div style={{ margin: '50px' }}>
+          <button className='mybutton' onClick={this.incrementCounterAction}>Increment Counter</button>
+          <button className='mybutton' onClick={this.resetCounterAction}>Reset Counter</button>
+          <button className='mybutton' onClick={this.unknownAction}>Unknown Action</button>
+          <button className='mybutton' onClick={this.extraCounterAction}>Extra Counter</button>
+        </div>
+{/* 
+        <div className='center'>
+          <p>this.</p>
+        </div> */}
+
         <div style={{ marginTop: '50px', backgroundColor: '#3D94F6', minHeight: '100vh', padding: '20px' }}>
+
           <h2>Component render count:</h2>
           <p className='App-p'>{this.renderCount}</p>
+
+          <h2>Counter state prop:</h2>
+          <p className='App-p'>{this.props.count}</p>
+
         </div>
 
       </div>
@@ -57,15 +75,15 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  oneOffRenderingAction: () => dispatch(oneOffRenderingAction()),
-  continuousRenderingAction: () => dispatch(continuousRenderingAction()),
-  unknownAction: () => dispatch(unknownAction()),
-  nonRenderingAction: () => dispatch(nonRenderingAction())
+  resetCounter: () => dispatch(resetCounterAction()),
+  incrementCounter: () => dispatch(incrementCounterAction()),
+  unknown: () => dispatch(unknownAction()),
+  extraCounter: () => dispatch(extraCounterAction())
 })
 
 const mapStateToProps = state => ({
   count: selectReducerCount(state),
-  message: selectMessage(state),
+  //message: selectMessage(state),
   //extra: selectExtra(state) //uncommenting will cause rerender
 })
 
