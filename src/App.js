@@ -73,10 +73,8 @@ class App extends Component {
         </div>
 
         <div style={{ marginTop: '30px', backgroundColor: '#3D94F6', minHeight: '100vh', padding: '10px' }}>
-          <p className='label'>Component render count:</p>
-          <p className='label'>{this.renderCount}</p>
-          <p className='label'>Counter state prop:</p>
-          <p className='label'>{this.props.count}</p>
+          <p className='label'>Component render count: {this.renderCount}</p>
+          <p className='label'>Counter state prop: {this.props.count}</p>
         </div>
 
       </div>
