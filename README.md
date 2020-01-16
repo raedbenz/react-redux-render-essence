@@ -1,6 +1,6 @@
 ﻿﻿﻿﻿﻿﻿﻿﻿
 ## Quick Overview
-This project demonstrates how Façade pattern can be implanted in react-redux app to abstract away various data formats when dealing with various web services.
+Developing real world apps with react is all about managing the re-rendering of components. This app aims to demonstrate the crocks of what cause rerendering when react and redux used together.
 
 
 ## How to Run
