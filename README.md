@@ -2,6 +2,7 @@
 ## Quick Overview
 Developing real world apps with react is all about managing the re-rendering of components. This app aims to demonstrate the crocks of what cause rerendering when react and redux used together.
 
+![](rrre.gif)
 
 ## How to Run
 ﻿This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
