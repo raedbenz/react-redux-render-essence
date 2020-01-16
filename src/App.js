@@ -49,8 +49,8 @@ class App extends Component {
             <a href='https://reactjs.org/docs/react-component.html#updating'>Link</a>
             <br /><br />
             When a component is connected to redux 2 things must be satisfied for a component to rerender:<br /><br />
-            1. A change to store state, which will lead to re-evaluation of mapStateToProps.<br />
-            2. A change to at least one of the mapStateToProps properties used by the component.
+            <b>1. A change to store state, which will lead to re-evaluation of mapStateToProps.</b><br />
+            <b>2. A change to at least one of the mapStateToProps properties used by the component. (Redux does a shallow compare for you)</b>
           </p>
         </header>
 
